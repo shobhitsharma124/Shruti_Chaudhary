@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+.logo {
+    background-color:#D3D3D3;
+    border: 1px solid black;
+    opacity: 0.3;
+    border-radius: 50%;
+    height: 5em;
+    width: 5em;
+}
+
+.navbar-dark {
+    background-color:blue;
+    color:floralwhite;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color:floralwhite;
+}

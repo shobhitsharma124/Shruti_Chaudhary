@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div *ngIf="viewss">
+        <div class="h4">Search for trainers: </div>
+        <button class="btn btn-danger" (click)="searchFor('Male')">Male</button>&nbsp;
+        <button class="btn btn-primary" (click)="searchFor('Female')">Female</button>&nbsp;
+        <button class="btn btn-secondary" (click)="searchFor('No Preference')">No Preference</button>&nbsp;
+        <button class="btn btn-success" (click)="searchFor('Show All')">Show All</button>
+
+        <hr>
+        <table class="table table-bordered">
+            <thead class="thead" style="background-color: #572c57;">
+                <tr>
+                    <th class="h1">Customer ID</th>
+                    <th class="h2">Name</th>
+                    <th class="h3">Address</th>
+                    <th class="h14">City</th>
+                    <th class="h5">Package</th>
+                    <th class="h6">Trainer Preference</th>
+                    <th class="h7">Phone</th>
+                    <th class="h8">Edit/Delete</th>
+                </tr>
+            </thead>
+            <!-- [ngStyle]="{background-color: i%2==0?'white':'blue'}" -->
+            <!-- [ngStyle]="{'background-color': y.id%2==0?'#ff808a':'#ffb5bb'}" -->
+            <tbody *ngIf="searchTrainer!='Show All'; else showAll">
+                <tr *ngFor="let y of viewss; let i=index" [ngStyle]="{'background-color': i%2==0?'#ff808a':'#ffb5bb'}">
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.id}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.firstname}} {{y.lastname}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.streetaddress}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.city}} {{y.pincode}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.packages}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.trainerpreference}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer">{{y.phonenumber}}</td>
+                    <td *ngIf="y.trainerpreference==searchTrainer"> <button class="btn btn-primary" (click)="editEmployee()">Edit</button> &nbsp;
+                        <span *ngIf="confirmDelete">
+                        <span>Do you really want to delete?  </span>
+                        <button class="btn btn-danger" (click)="deleteEmployee(y.id)">Yes</button>&nbsp;
+                        <button class="btn btn-primary" (click)="confirmDelete=false">No</button>
+                        </span>
+                        <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <!-- for show all -->
+            <ng-template #showAll>
+                <tbody>
+                    <tr *ngFor="let y of viewss; let i=index" [ngStyle]="{'background-color': i%2==0?'#ff808a':'#ffb5bb'}">
+                        <td>{{y.id}}</td>
+                        <td>{{y.firstname}} {{y.lastname}}</td>
+                        <td>{{y.streetaddress}}</td>
+                        <td>{{y.city}} {{y.pincode}}</td>
+                        <td>{{y.packages}}</td>
+                        <td>{{y.trainerpreference}}</td>
+                        <td>{{y.phonenumber}}</td>
+                        <td> <button class="btn btn-primary" (click)="editEmployee()">Edit</button> &nbsp;
+                            <span *ngIf="confirmDelete">
+                <span>Do you really want to delete?  </span>
+                            <button class="btn btn-danger" (click)="deleteEmployee(y.id)">Yes</button>&nbsp;
+                            <button class="btn btn-primary" (click)="confirmDelete=false">No</button>
+                            </span>
+                            <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </ng-template>
+
+        </table>
+
+
+    </div>
+
+
+</div>

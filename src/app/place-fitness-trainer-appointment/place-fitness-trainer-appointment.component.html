@@ -1,0 +1,179 @@
+<div class="row">
+    <div class="col-xs-5">
+        <div class="h2">PERSONAL INFORMATION</div>
+    </div>
+</div>
+<form novalidate [formGroup]="fitnessForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>First Name</label>
+                <input formControlName="firstname" placeholder="First Name" type="text" class="form-control" required pattern="[A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.firstname">{{formErrors.firstname}}</small>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Last Name</label>
+                <input formControlName="lastname" placeholder="Last Name" type="text" class="form-control" required pattern="[A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.lastname">{{formErrors.lastname}}</small>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Age</label>
+                <input formControlName="age" placeholder="Age" type="text" class="form-control" required>
+                <small class="text-danger" *ngIf="formErrors.age">{{formErrors.age}}</small>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Phone no.</label>
+                <input formControlName="phonenumber" placeholder="phonenumber" type="text" class="form-control" required pattern="[0-9]*">
+                <small class="text-danger" *ngIf="formErrors.phonenumber">{{formErrors.phonenumber}}</small>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Email</label>
+                <input formControlName="email" placeholder="Email" type="email" class="form-control" required>
+                <small class="text-danger" *ngIf="formErrors.email">{{formErrors.email}}</small>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Address</label>
+                <input formControlName="streetaddress" placeholder="streetaddress" type="text" class="form-control" required pattern="#[0-9A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.streetaddress">{{formErrors.streetaddress}}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>City</label>
+                <input formControlName="city" placeholder="city" type="text" class="form-control" required pattern="[A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.city">{{formErrors.city}}</small>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>State</label>
+                <input formControlName="state" placeholder="state" type="text" class="form-control" required pattern="[A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.state">{{formErrors.state}}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Country</label>
+                <input formControlName="country" placeholder="country" type="text" class="form-control" required pattern="[A-Za-z]*">
+                <small class="text-danger" *ngIf="formErrors.country">{{formErrors.country}}</small>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Pincode</label>
+                <input formControlName="pincode" placeholder="pincode" type="text" class="form-control" pattern="[0-9]*" required>
+                <small class="text-danger" *ngIf="formErrors.pincode">{{formErrors.pincode}}</small>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="form-group ">
+                <label>Trainer Preference</label>
+                <div class="custom-control custom-radio">
+                    <input id="male" type="radio" class="custom-control-input" value="Male" name="trainerpreference" formControlName="trainerpreference">
+                    <label class="custom-control-label" for="male">Male</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="female" type="radio" class="custom-control-input" value="Female" name="trainerpreference" formControlName="trainerpreference">
+                    <label class="custom-control-label" for="female">Female</label>
+                </div>
+
+
+                <div class="custom-control custom-radio">
+                    <input id="nopref" type="radio" class="custom-control-input" value="No Preference" name="trainerpreference" formControlName="trainerpreference">
+                    <label class="custom-control-label" for="nopref">No Preference</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="form-group ">
+                <label>Physiotherapist</label>
+                <div class="custom-control custom-radio">
+                    <input id="Yes" type="radio" class="custom-control-input" value="Yes" name="physiotherapist" formControlName="physiotherapist">
+                    <label class="custom-control-label" for="Yes">Yes</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="No" type="radio" class="custom-control-input" value="No" name="physiotherapist" formControlName="physiotherapist">
+                    <label class="custom-control-label" for="No">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="form-group ">
+                <label>Packages</label>
+                <div class="custom-control custom-radio">
+                    <input id="300" type="radio" class="custom-control-input" value="1500" (click)="changeINR('1500')" name="packages" formControlName="packages">
+                    <label class="custom-control-label" for="300">5 session a week (Rs.300 per session)</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="400" type="radio" class="custom-control-input" value="1200" (click)="changeINR('1200')" name="packages" formControlName="packages">
+                    <label class="custom-control-label" for="400">3 Sessions a week (Rs.400 per session)</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="500" type="radio" class="custom-control-input" value="500" (click)="changeINR('500')" name="packages" formControlName="packages">
+                    <label class="custom-control-label" for="500">Once a week only (Rs.500)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>INR</label>
+                <input formControlName="inr" type="text" [(ngModel)]="someInrValue" class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Paisa</label>
+                <input formControlName="paisa" placeholder="Paisa" type="text" class="form-control" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="text-center">
+                <button type="submit" class="btn btn-success" [disabled]="fform.form.invalid">Submit</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>
